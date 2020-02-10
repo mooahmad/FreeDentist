@@ -15,11 +15,10 @@ class UserResource extends BaseResource
     public function toArray($request)
     {
         return array_merge([
-            'first_name' => $this->first_name,
-            'last_name' => $this->last_name,
+            'id' => $this->id,
+            'name' => $this->name,
             'email' => $this->email,
-            'permissions' => $this->getPermissions()->toArray(),
-
+            'otp'=>$this->otp,
         ], parent::toArray($request));
     }
 }
