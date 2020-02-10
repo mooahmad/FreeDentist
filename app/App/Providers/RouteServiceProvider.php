@@ -2,6 +2,7 @@
 
 namespace App\App\Providers;
 
+use App\Users\Domain\Models\User;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+//        Route::bind('patient', function ($value) {
+//            return User::admin()->findOrFail($value);
+//        });
         parent::boot();
 
     }
@@ -37,6 +41,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapAuthRoutes();
         $this->mapGuestRoutes();
         $this->mapPublicRoutes();
+        $this->mapAuthDentist();
 //        $this->mapWebRoutes();
 
         //
@@ -71,12 +76,20 @@ class RouteServiceProvider extends ServiceProvider
                 ->group($file);
         }
     }
+
+    protected function mapAuthDentist()
+    {
+
+            Route::prefix('api')
+                ->middleware(['api', 'auth:dentist'])
+                ->group(base_path('routes/api/auth/dentist/dentist.php'));
+    }
     protected function mapGuestRoutes()
     {
 
         foreach (glob(base_path('routes/api/guest/*.php')) as $file) {
             Route::prefix('api')
-                ->middleware(['api', 'guest:api'])
+                ->middleware(['api', 'guest:api','lang'])
                 ->group($file);
         }
     }

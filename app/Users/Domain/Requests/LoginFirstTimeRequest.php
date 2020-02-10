@@ -1,15 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ahmad
- * Date: 1/6/2020
- * Time: 12:58 PM
- */
 
 namespace App\Users\Domain\Requests;
 
+use App\App\Http\Requests\APIRequest;
 
-class LoginFirstTime
+class LoginFirstTimeRequest extends APIRequest
 {
-
+    public function rules()
+    {
+        return [
+            'otp' => 'required|numeric',
+        ];
+    }
 }

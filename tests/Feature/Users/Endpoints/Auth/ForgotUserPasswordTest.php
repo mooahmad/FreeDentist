@@ -3,7 +3,7 @@
 namespace Tests\Feature\Endpoints\Users\Auth;
 
 use App\Users\Domain\Mails\ResetPassword;
-use App\Users\Domain\Models\User;
+use App\Users\Domain\Models\Dentist;
 use Mail;
 use Tests\TestCase;
 
@@ -13,7 +13,7 @@ class ForgotUserPasswordTest extends TestCase
     public function it_should_send_user_reminder_token_when_user_is_activated()
     {
         Mail::fake();
-        $user = factory(User::class)->states('with-activation')->create();
+        $user = factory(Dentist::class)->states('with-activation')->create();
         $user->activation()->update([
             'completed_at' => now(),
         ]);
@@ -37,7 +37,7 @@ class ForgotUserPasswordTest extends TestCase
     /** @test */
     public function it_shouldnt_let_user_get_reminder_token_if_user_isnt_activated_yet()
     {
-        $user = factory(User::class)->create();
+        $user = factory(Dentist::class)->create();
         $this->post('/api/forgot-password', [
             'email' => $user->email,
         ])->assertStatus(422);

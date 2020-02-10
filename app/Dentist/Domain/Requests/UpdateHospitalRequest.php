@@ -1,15 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ahmad
- * Date: 1/11/2020
- * Time: 11:11 PM
- */
 
 namespace App\Dentist\Domain\Requests;
 
+use App\App\Http\Requests\APIRequest;
 
-class UpdateHospitalRequest
+class UpdateHospitalRequest extends APIRequest
 {
-
+    public function rules()
+    {
+        return [
+            'hospital' => 'required|integer'
+        ];
+    }
 }

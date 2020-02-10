@@ -5,7 +5,7 @@ namespace Tests\Unit\Users\Domain\Services;
 use App\App\Domain\Payloads\GenericPayload;
 use App\App\Domain\Payloads\UnauthorizedPayload;
 use App\Users\Domain\Models\Activation;
-use App\Users\Domain\Models\User;
+use App\Users\Domain\Models\Dentist;
 use App\Users\Domain\Services\LoginUserService;
 use Auth;
 use Tests\TestCase;
@@ -15,7 +15,7 @@ class LoginUserServiceTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->user = factory(User::class)->make([
+        $this->user = factory(Dentist::class)->make([
             'id' => 1,
         ]);
     }

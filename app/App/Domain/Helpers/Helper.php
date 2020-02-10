@@ -1,13 +1,13 @@
 <?php
 
-namespace App\App\Domain\Traits;
+namespace App\App\Domain\Helpers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
 
-trait Helper
+class Helper
 {
     /**
      * this function add and delete image
@@ -64,17 +64,6 @@ trait Helper
         else
             $url = Storage::url($fullFilePath);
         return URL::to('/public/') . $url;
-    }
-
-    public function generateDateRange($start_date, $end_date)
-    {
-        $dates = [];
-        $start = Carbon::createFromDate($start_date);
-        $end = Carbon::createFromDate($end_date);
-        for ($date = $start; $date->lte($end); $date->addDay()) {
-            $dates[] = $date->format('Y-m-d');
-        }
-        return $dates;
     }
 
 }

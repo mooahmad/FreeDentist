@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Followers\Domain\Repositories;
+namespace App\Hospital\Domain\Repositories;
 use App\Followers\Domain\Models\Follower;
 use App\App\Domain\Repositories\Repository;
+use App\Hospital\Domain\Models\Hospital;
 
-class FollowerRepository extends Repository
+class HospitalRepository extends Repository
 {
     protected $model;
 
-    public function __construct(Follower $model)
+    public function __construct(Hospital $model)
     {
         $this->model = $model;
     }

@@ -4,6 +4,7 @@ namespace App\Users\Actions;
 
 use App\Users\Domain\Services\GetAuthenticatedUserService;
 use App\Users\Responders\GetAuthenticatedUserResponder;
+use Illuminate\Http\Request;
 
 class GetAuthenticatedUserAction
 {

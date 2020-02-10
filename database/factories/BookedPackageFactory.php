@@ -5,7 +5,7 @@
 use App\BookedPackages\Domain\Models\BookedPackage;
 use App\Packages\Domain\Models\Package;
 use App\PackageTypes\Domain\Models\PackageType;
-use App\Users\Domain\Models\User;
+use App\Users\Domain\Models\Dentist;
 use Faker\Generator as Faker;
 
 $factory->define(BookedPackage::class, function (Faker $faker) {
@@ -26,7 +26,7 @@ $factory->define(BookedPackage::class, function (Faker $faker) {
         'postal_code' => $faker->postcode,
         'price' => $faker->numberBetween(30, 100),
         'user_id' => function () {
-            return factory(User::class)->create()->id;
+            return factory(Dentist::class)->create()->id;
         },
 
     ];

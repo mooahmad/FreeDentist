@@ -9,10 +9,17 @@ class RegisterUserFormRequest extends APIRequest
     public function rules()
     {
         return [
-            'first_name' => 'required|min:4|max:40|string',
-            'last_name' => 'required|min:4|max:40|string',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:8|max:32|confirmed',
+            'name' => 'required|string|max:255',
+            'mobile'     => 'required|numeric|regex:/(05)[0-9]{8}/|unique:users',
+            'email'      => 'required|string|email|max:255|unique:users',
+            'password'   => 'required|string|min:6|confirmed',
+            'birthdate' => 'required|date',
+
         ];
+    }
+    public function validated() {
+        return array_merge(parent::validated(), [
+            'admin' => 2
+        ]);
     }
 }

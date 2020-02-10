@@ -19,10 +19,8 @@ class RegisterUserService extends Service
 
     public function handle($data = [])
     {
-        $data['password'] = bcrypt($data['password']);
         $pipes = [
             CreateUserPipeline::class,
-            CreateActivationTokenForUserPipeline::class,
         ];
         $user = app(Pipeline::class)->through($pipes)->send($data)->then(function ($user) {
             return $user;

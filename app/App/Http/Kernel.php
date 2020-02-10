@@ -39,6 +39,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+
         ],
 
         'api' => [
@@ -47,6 +48,7 @@ class Kernel extends HttpKernel
             \App\App\Http\Middleware\JsonifyResponse::class,
             \App\App\Http\Middleware\ParseJWTToken::class,
             \App\App\Http\Middleware\ProfileJsonResponse::class,
+            \App\App\Http\Middleware\Language::class,
 
         ],
     ];
@@ -68,6 +70,10 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'lang' => \App\App\Http\Middleware\Language::class,
+        'jwt.auth' => 'Tymon\JWTAuth\Middleware\GetUserFromToken',
+        'jwt.refresh' => 'Tymon\JWTAuth\Middleware\RefreshToken',
+
     ];
 
     /**

@@ -2,8 +2,10 @@
 namespace App\App\Domain\Payloads;
 abstract class Payload
 {
-    protected $data = null;
+    protected $data = [];
+
     protected $status = 200;
+
     public function __construct($data = null, $status = null)
     {
         if (isset($data)) {
@@ -13,10 +15,12 @@ abstract class Payload
             $this->status = $status;
         }
     }
+
     public function getData()
     {
         return $this->data;
     }
+
     public function getStatus()
     {
         return $this->status;

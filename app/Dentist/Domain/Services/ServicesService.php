@@ -4,16 +4,19 @@ namespace App\Dentist\Domain\Services;
 
 use App\App\Domain\Payloads\GenericPayload;
 use App\App\Domain\Services\Service;
+use App\Dentist\Domain\Repositories\DentistCalendarRepository;
 use App\Dentist\Domain\Repositories\DentistRepository;
 class ServicesService extends Service 
 {
-    protected $dentist;
-    public function __construct(DentistRepository $dentist) 
+    protected $calendar;
+    public function __construct(DentistCalendarRepository $calendar)
     {
-        $this->dentist = $dentist;
+        $this->calendar = $calendar;
     }
     public function handle($data = []) 
     {
-        return new GenericPayload($this->dentist->all());
+        $calendar = $this->calendar->where('dentist_id',auth()->id())->get();
+
+        return new GenericPayload($calendar);
     }
 }

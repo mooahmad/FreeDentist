@@ -2,6 +2,8 @@
 
 namespace App\Events\Actions;
 
+use App\Events\Domain\Models\Event;
+use App\Events\Domain\Requests\EventIdRequest;
 use App\Events\Domain\Services\AcceptReservationService;
 use App\Events\Responders\AcceptReservationResponder;
 
@@ -12,10 +14,10 @@ class AcceptReservationAction
         $this->responder = $responder;
         $this->services = $services;
     }
-    public function __invoke() 
+    public function __invoke(Event $event)
     {
         return $this->responder->withResponse(
-            $this->services->handle()
+            $this->services->handle($event)
         )->respond();
     }
 }

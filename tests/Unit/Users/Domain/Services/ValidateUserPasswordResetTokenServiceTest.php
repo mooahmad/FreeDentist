@@ -3,7 +3,7 @@
 namespace Tests\Unit\Users\Domain\Services;
 
 use App\Users\Domain\Models\PasswordReset;
-use App\Users\Domain\Models\User;
+use App\Users\Domain\Models\Dentist;
 use App\Users\Domain\Repositories\ActivationRepository;
 use App\Users\Domain\Repositories\PasswordResetRepository;
 use App\Users\Domain\Repositories\UserRepository;
@@ -16,7 +16,7 @@ class ValidateUserPasswordResetTokenServiceTest extends TestCase
     /** @test */
     public function it_should_not_let_user_validate_his_reminder_token_if_user_is_not_activated_yet()
     {
-        $user = factory(User::class)->make();
+        $user = factory(Dentist::class)->make();
         $reminder = factory(PasswordReset::class)->make([
             'user_id' => $user->id,
         ]);
@@ -35,7 +35,7 @@ class ValidateUserPasswordResetTokenServiceTest extends TestCase
     /** @test */
     public function it_should_fail_if_user_tries_to_validate_an_invalid_reminder_token()
     {
-        $user = factory(User::class)->make();
+        $user = factory(Dentist::class)->make();
         $reminder = factory(PasswordReset::class)->make([
             'user_id' => $user->id,
         ]);
@@ -55,7 +55,7 @@ class ValidateUserPasswordResetTokenServiceTest extends TestCase
     /** @test */
     public function it_should_succeed_if_user_tries_to_validate_a_valid_reminder_token()
     {
-        $user = factory(User::class)->make();
+        $user = factory(Dentist::class)->make();
         $reminder = factory(PasswordReset::class)->make([
             'user_id' => $user->id,
         ]);

@@ -3,7 +3,7 @@
 namespace Tests\Feature\Users\Endpoints\Auth;
 
 use App\Users\Domain\Listeners\SendActivationMail;
-use App\Users\Domain\Models\User;
+use App\Users\Domain\Models\Dentist;
 use Queue;
 use Tests\TestCase;
 
@@ -17,7 +17,7 @@ class RegisterUserTest extends TestCase
     /** @test */
     public function it_shouldnt_let_user_register_if_email_or_username_exists()
     {
-        $user = factory(User::class)->create([
+        $user = factory(Dentist::class)->create([
             'first_name' => 'mohammed',
             'last_name' => 'osama',
         ]);
@@ -36,7 +36,7 @@ class RegisterUserTest extends TestCase
     public function it_registers_user_with_correct_data()
     {
         Queue::fake();
-        $user = factory(User::class)->make([
+        $user = factory(Dentist::class)->make([
             'first_name' => 'mohammed',
             'last_name' => 'osama',
             'email' => 'hello@gmail.com',

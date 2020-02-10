@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Users\Domain\Resources;
 
-use App\Users\Domain\Models\User;
+use App\Users\Domain\Models\Dentist;
 use App\Users\Domain\Resources\UserResource;
 use Tests\TestCase;
 
@@ -11,7 +11,7 @@ class UserResourceTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->user = factory(User::class)->make();
+        $this->user = factory(Dentist::class)->make();
     }
     /** @test */
     public function it_should_return_a_normal_resource_without_any_relation_loaded()

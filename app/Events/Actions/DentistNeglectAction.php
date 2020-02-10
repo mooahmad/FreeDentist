@@ -2,6 +2,7 @@
 
 namespace App\Events\Actions;
 
+use App\Events\Domain\Models\Event;
 use App\Events\Domain\Services\DentistNeglectService;
 use App\Events\Responders\DentistNeglectResponder;
 
@@ -12,10 +13,10 @@ class DentistNeglectAction
         $this->responder = $responder;
         $this->services = $services;
     }
-    public function __invoke() 
+    public function __invoke(Event $event)
     {
         return $this->responder->withResponse(
-            $this->services->handle()
+            $this->services->handle($event)
         )->respond();
     }
 }

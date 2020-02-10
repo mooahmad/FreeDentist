@@ -11,8 +11,8 @@ class LoginUserService extends Service
     public function handle($data = [])
     {
 
-        if (auth()->attempt($data) && ($isActivated = auth()->user()->isActivated())) {
-            return new GenericPayload(auth()->user());
+        if (auth()->guard('api')->attempt($data) && ($isActivated = auth()->guard('api')->user()->isActivated())) {
+            return new GenericPayload(auth()->guard('api')->user());
         }
 
         if (isset($isActivated) && !$isActivated) {

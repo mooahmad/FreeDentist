@@ -11,10 +11,12 @@
         "php": "^7.2",
         "barryvdh/laravel-cors": "^0.11.4",
         "barryvdh/laravel-debugbar": "dev-master",
-        "guzzlehttp/guzzle": "^6.3",
+        "edujugon/push-notification": "^4.1",
         "fideloper/proxy": "^4.0",
+        "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
+        "lexxyungcarter/chatmessenger": "^1.2",
         "sectheater/artify": "dev-master",
         "tymon/jwt-auth": "dev-develop"
     },

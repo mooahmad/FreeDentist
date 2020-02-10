@@ -4,6 +4,7 @@ namespace App\Users\Domain\Services;
 
 use App\App\Domain\Payloads\GenericPayload;
 use App\App\Domain\Services\Service;
+use App\Users\Domain\Models\Dentist;
 use App\Users\Domain\Models\User;
 use App\Users\Domain\Repositories\ActivationRepository;
 use App\Users\Domain\Repositories\UserRepository;

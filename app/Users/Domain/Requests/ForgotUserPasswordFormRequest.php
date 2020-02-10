@@ -24,8 +24,7 @@ class ForgotUserPasswordFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'email',
-            ],
+            'mobile' => 'required|numeric|regex:/(05)[0-9]{8}/',
 
         ];
     }

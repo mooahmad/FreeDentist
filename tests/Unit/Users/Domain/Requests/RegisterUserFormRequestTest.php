@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Users\Domain\Requests;
 
-use App\Users\Domain\Models\User;
+use App\Users\Domain\Models\Dentist;
 use App\Users\Domain\Requests\RegisterFormRequest;
 use App\Users\Domain\Requests\RegisterUserFormRequest;
 use Illuminate\Support\Str;
@@ -197,7 +197,7 @@ class RegisterUserFormRequestTest extends TestCase
     }
     protected function makeByAttribute(array $attributes)
     {
-        return factory(User::class)->make()->only($attributes);
+        return factory(Dentist::class)->make()->only($attributes);
     }
 
 }

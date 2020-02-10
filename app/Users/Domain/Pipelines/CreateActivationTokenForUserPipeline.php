@@ -4,20 +4,21 @@ namespace App\Users\Domain\Pipelines;
 
 use App\Users\Domain\Events\UserWasRegistered;
 use App\Users\Domain\Repositories\ActivationRepository;
+use App\Users\Domain\Repositories\UserRepository;
 
 class CreateActivationTokenForUserPipeline
 {
-    protected $activations;
+    protected $user;
 
-    public function __construct(ActivationRepository $activations)
+    public function __construct(UserRepository $user)
     {
-        $this->activations = $activations;
+        $this->user = $user;
     }
 
     public function handle($user, \Closure $next)
     {
-        $this->activations->generateToken($user);
-        event(new UserWasRegistered($user));
+        $this->user->generateToken($user);
+       // event(new UserWasRegistered($user));
         return $next($user);
     }
 

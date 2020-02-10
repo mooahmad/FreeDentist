@@ -17,6 +17,17 @@
       'Debugbar' => 'Barryvdh\\Debugbar\\Facade',
     ),
   ),
+  'edujugon/push-notification' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Edujugon\\PushNotification\\Providers\\PushNotificationServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'PushNotification' => 'Edujugon\\PushNotification\\Facades\\PushNotification',
+    ),
+  ),
   'facade/ignition' => 
   array (
     'providers' => 
@@ -40,6 +51,13 @@
     'providers' => 
     array (
       0 => 'Laravel\\Tinker\\TinkerServiceProvider',
+    ),
+  ),
+  'lexxyungcarter/chatmessenger' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Lexx\\ChatMessenger\\ChatMessengerServiceProvider',
     ),
   ),
   'nesbot/carbon' => 

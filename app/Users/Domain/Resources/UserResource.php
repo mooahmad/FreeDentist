@@ -18,7 +18,6 @@ class UserResource extends BaseResource
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
-            'otp'=>$this->otp,
         ], parent::toArray($request));
     }
 }

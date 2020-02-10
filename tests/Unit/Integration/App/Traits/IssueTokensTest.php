@@ -3,7 +3,7 @@
 namespace Tests\Unit\Integration\App\Traits;
 
 use App\Users\Domain\Models\Activation;
-use App\Users\Domain\Models\User;
+use App\Users\Domain\Models\Dentist;
 use App\Users\Domain\Repositories\ActivationRepository;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Str;
@@ -15,7 +15,7 @@ class IssueTokensTest extends TestCase
     {
         parent::setUp();
         $this->activationRepository = app(ActivationRepository::class);
-        $this->user = factory(User::class)->create();
+        $this->user = factory(Dentist::class)->create();
     }
     /** @test */
     public function it_should_throw_an_exception_if_user_doesnt_have_a_token()
@@ -32,19 +32,19 @@ class IssueTokensTest extends TestCase
     /** @test */
     public function it_should_return_a_model_instance_if_token_is_found()
     {
-        $this->user = factory(User::class)->states('with-activation')->create();
+        $this->user = factory(Dentist::class)->states('with-activation')->create();
         $this->assertInstanceOf(Activation::class, $this->activationRepository->hasToken($this->user));
     }
     /** @test */
     public function it_should_return_a_model_instance_if_passed_token_is_found()
     {
-        $this->user = factory(User::class)->states('with-activation')->create();
+        $this->user = factory(Dentist::class)->states('with-activation')->create();
         $this->assertInstanceOf(Activation::class, $this->activationRepository->hasToken($this->user, $this->user->activation->token));
     }
     /** @test */
     public function it_should_return_the_old_token_if_user_already_has_one()
     {
-        $this->user = factory(User::class)->states('with-activation')->create();
+        $this->user = factory(Dentist::class)->states('with-activation')->create();
         $this->assertEquals($this->activationRepository->hasOrCreateToken($this->user)->token, $this->user->activation->token);
     }
     /** @test */
@@ -55,7 +55,7 @@ class IssueTokensTest extends TestCase
     /** @test */
     public function it_should_return_true_if_user_has_completed_the_process()
     {
-        $this->user = factory(User::class)->states('with-activation')->create();
+        $this->user = factory(Dentist::class)->states('with-activation')->create();
         $this->user->activation->update([
             'completed_at' => now(),
         ]);
@@ -64,13 +64,13 @@ class IssueTokensTest extends TestCase
     /** @test */
     public function it_should_return_false_if_user_hasnt_completed_the_process()
     {
-        $this->user = factory(User::class)->states('with-activation')->create();
+        $this->user = factory(Dentist::class)->states('with-activation')->create();
         $this->assertFalse($this->activationRepository->completed($this->user));
     }
     /** @test */
     public function it_should_return_true_if_user_can_complete_the_process()
     {
-        $this->user = factory(User::class)->states('with-activation')->create();
+        $this->user = factory(Dentist::class)->states('with-activation')->create();
         $this->assertTrue(
             $this->activationRepository->complete(
                 $this->user,
@@ -81,14 +81,14 @@ class IssueTokensTest extends TestCase
     /** @test */
     public function it_should_throw_an_exception_if_the_user_cant_complete_the_process()
     {
-        $this->user = factory(User::class)->states('with-activation')->create();
+        $this->user = factory(Dentist::class)->states('with-activation')->create();
         $this->expectException(ModelNotFoundException::class);
         $this->activationRepository->complete($this->user, 'invalid-token');
     }
     /** @test */
     public function it_should_regenerate_token_if_user_already_has_one()
     {
-        $this->user = factory(User::class)->states('with-activation')->create();
+        $this->user = factory(Dentist::class)->states('with-activation')->create();
         $this->assertNotEquals(
             $this->user->activation->token,
             $this->activationRepository->regenerateToken($this->user)
@@ -122,7 +122,7 @@ class IssueTokensTest extends TestCase
     /** @test */
     public function it_shouldnt_remove_tokens_that_arent_expired_yet()
     {
-        $this->user = factory(User::class)->states('with-activation')->create();
+        $this->user = factory(Dentist::class)->states('with-activation')->create();
         $this->activationRepository->removeExpired();
         $this->assertDatabaseHas('activations', [
             'token' => $this->user->activation->token,

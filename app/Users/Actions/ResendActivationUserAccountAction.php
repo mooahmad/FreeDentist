@@ -2,6 +2,7 @@
 
 namespace App\Users\Actions;
 
+use App\Users\Domain\Models\Dentist;
 use App\Users\Domain\Models\User;
 use App\Users\Domain\Requests\ResendActivationUserAccountFormRequest;
 use App\Users\Domain\Services\ResendActivationUserAccountService;

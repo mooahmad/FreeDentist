@@ -1,15 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ahmad
- * Date: 1/13/2020
- * Time: 2:23 PM
- */
 
 namespace App\Dentist\Responders;
 
+use App\App\Responders\Responder;
+use App\App\Responders\ResponderInterface;
+use App\Dentist\Domain\Resources\ReservationResource;
 
-class SearchReservationReponder
+class SearchReservationReponder extends Responder implements ResponderInterface
 {
-
+    public function respond()
+    {
+        return (new ReservationResource($this->response->getData()));
+    }
 }

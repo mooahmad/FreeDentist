@@ -16,7 +16,7 @@ class RegisterUserAction
     public function __invoke(RegisterUserFormRequest $request)
     {
         return $this->responder->withResponse(
-            $this->services->handle($request->validated())
+            $this->services->handle($request->all())
         )->respond();
     }
 }

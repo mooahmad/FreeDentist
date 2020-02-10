@@ -14,31 +14,18 @@ use Mail;
 class ForgotUserPasswordService extends Service
 {
     protected $users;
-    protected $activations;
-    protected $reminders;
-    public function __construct(UserRepository $users, PasswordResetRepository $reminders, ActivationRepository $activations)
+
+    public function __construct(UserRepository $users)
     {
         $this->users = $users;
-        $this->reminders = $reminders;
-        $this->activations = $activations;
     }
+
     public function handle($data = [])
     {
-        $user = $this->users->whereEmail($data['email'])->firstOrFail();
-
-        if ($this->activations->completed($user)) {
-            Mail::to($user)->send(
-                new ResetPassword(
-                    $user,
-                    $this->reminders->hasOrCreateToken($user)
-                )
-            );
+        $user = $this->users->where('mobile', $data['mobile'])->firstOrFail();
+        $passowrd=    $this->users->newPassword($user);
             return new GenericPayload([
-                'message' => 'Token has been sent to your mail,' . $user->first_name,
+                'message' => 'Token has been sent to your mail,' . $user->first_name . 'and password is '. $passowrd,
             ]);
-        }
-        return new GenericPayload([
-            'message' => 'It looks like you did not activate your account yet.',
-        ], 422);
     }
 }

@@ -2,10 +2,11 @@
 
 namespace App\Dentist\Domain\Resources;
 
+use App\App\Http\Resources\BaseCollectionResource;
 use App\App\Http\Resources\BaseResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class ShwoCalendarResource extends ResourceCollection
+class ShowCalendarResource extends BaseCollectionResource
 {
     /**
      * Transform the resource into an array.
@@ -15,8 +16,8 @@ class ShwoCalendarResource extends ResourceCollection
      */
     public function toArray($request)
     {
-        return [
+        return array_merge([
             'times' => $this->collection
-        ];
+        ],parent::toArray($request));
     }
 }

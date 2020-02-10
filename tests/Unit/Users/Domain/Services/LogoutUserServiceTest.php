@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Users\Domain\Services;
 
-use App\Users\Domain\Models\User;
+use App\Users\Domain\Models\Dentist;
 use App\Users\Domain\Services\LogoutUserService;
 use Tests\TestCase;
 
@@ -12,7 +12,7 @@ class LogoutUserServiceTest extends TestCase
     public function it_should_logout_user_successfully()
     {
         auth()->login(
-            factory(User::class)->make()
+            factory(Dentist::class)->make()
         );
         $logoutUserService = new LogoutUserService;
         $response = $logoutUserService->handle();

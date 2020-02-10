@@ -45,6 +45,11 @@ return [
             'driver' => 'jwt',
             'provider' => 'users',
         ],
+
+        'dentist' => [
+            'driver' => 'jwt',
+            'provider' => 'dentist',
+        ],
     ],
 
     /*
@@ -68,6 +73,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => \App\Users\Domain\Models\User::class,
+        ],
+        'dentist' => [
+            'driver' => 'eloquent',
+            'model' => \App\Dentist\Domain\Models\Dentist::class,
         ],
 
         // 'users' => [

@@ -5,7 +5,7 @@ namespace App\Dentist\Domain\Resources;
 use App\App\Http\Resources\BaseResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class DentistResource extends ResourceCollection
+class ReservationResource extends ResourceCollection
 {
     /**
      * Transform the resource into an array.

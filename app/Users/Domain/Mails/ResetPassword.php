@@ -3,7 +3,7 @@
 namespace App\Users\Domain\Mails;
 
 use App\Users\Domain\Models\PasswordReset;
-use App\Users\Domain\Models\User;
+use App\Users\Domain\Models\Dentist;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -14,7 +14,7 @@ class ResetPassword extends Mailable
     public $user;
     public $token;
 
-    public function __construct(User $user, PasswordReset $passwordReset)
+    public function __construct(Dentist $user, PasswordReset $passwordReset)
     {
         $this->user = $user;
         $this->token = $passwordReset->token;

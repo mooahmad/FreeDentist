@@ -18,7 +18,7 @@ class LoginUserAction
     {
 
         return $this->responder->withResponse(
-            $this->services->handle($request->validated())
+            $this->services->handle($request->all())
         )->respond();
     }
 }

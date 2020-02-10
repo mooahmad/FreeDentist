@@ -2,7 +2,7 @@
 
 namespace App\Users\Domain\Mails;
 
-use App\Users\Domain\Models\User;
+use App\Users\Domain\Models\Dentist;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -12,10 +12,10 @@ class Activation extends Mailable
     use Queueable, SerializesModels;
     public $user;
     public $token;
-    public function __construct(User $user, \App\Users\Domain\Models\Activation $activation)
+    public function __construct(Dentist $user)
     {
         $this->user = $user;
-        $this->token = $activation->token;
+
     }
 
     public function build()

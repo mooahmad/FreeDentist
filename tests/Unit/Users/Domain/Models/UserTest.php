@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Users\Domain\Models;
 
-use App\Users\Domain\Models\User;
+use App\Users\Domain\Models\Dentist;
 use Artify\Artify\Traits\Roles\Roles;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -15,7 +15,7 @@ class UserTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->user = app(User::class);
+        $this->user = app(Dentist::class);
     }
     /** @test */
     public function it_should_has_id_and_company_id_guarded()
@@ -85,7 +85,7 @@ class UserTest extends TestCase
     /** @test */
     public function it_should_use_roles_trait()
     {
-        $this->assertTrue(in_array(Roles::class, array_keys((new ReflectionClass(User::class))->getTraits())));
+        $this->assertTrue(in_array(Roles::class, array_keys((new ReflectionClass(Dentist::class))->getTraits())));
     }
 
 }

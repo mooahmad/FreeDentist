@@ -5,7 +5,7 @@ namespace App\Users\Domain\Services;
 use App\App\Domain\Payloads\GenericPayload;
 use App\App\Domain\Payloads\UnauthorizedPayload;
 use App\App\Domain\Services\Service;
-use App\Users\Domain\Models\User;
+use App\Users\Domain\Models\Dentist;
 use App\Users\Domain\Repositories\ActivationRepository;
 use App\Users\Domain\Repositories\PasswordResetRepository;
 use App\Users\Domain\Repositories\ReminderRepository;
@@ -21,7 +21,7 @@ class ValidateUserPasswordResetTokenService extends Service
         $this->passwordReset = $passwordReset;
         $this->activations = $activations;
     }
-    public function handle(User $user = null, $token = null)
+    public function handle(Dentist $user = null, $token = null)
     {
         if ($this->activations->completed($user)) {
             $this->passwordReset->hasToken($user, $token);

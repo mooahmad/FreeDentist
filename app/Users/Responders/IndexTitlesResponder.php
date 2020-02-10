@@ -4,7 +4,7 @@ namespace App\Users\Responders;
 
 use App\App\Responders\Responder;
 use App\App\Responders\ResponderInterface;
-use App\Users\Domain\Resources\TitleResource;
+use App\Users\Domain\Resources\AccountResource;
 
 class IndexTitlesResponder extends Responder implements ResponderInterface
 {
@@ -13,6 +13,6 @@ class IndexTitlesResponder extends Responder implements ResponderInterface
         if ($this->response->getStatus() !=200){
             return response()->json($this->response->getData(),$this->response->getStatus());
             }
-            return TitleResource::collection($this->response->getData());
+            return AccountResource::collection($this->response->getData());
     }
 }

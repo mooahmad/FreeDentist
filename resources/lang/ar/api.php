@@ -1,7 +1,23 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ahmad
- * Date: 1/12/2020
- * Time: 4:20 PM
- */
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Authentication Language Lines
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines are used during authentication for various
+    | messages that we need to display to the user. You are free to modify
+    | these language lines according to your application's requirements.
+    |
+    */
+
+    'success' => 'تمت بنجاح',
+    'empty' => 'لم يتم اضافة شئ',
+    'patient_confirm' => 'تأكيد حضورك قبل يوم واحد من الموعد',
+    // 'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'approve_failed' => 'عفوا, ميعاد الحجز انتهي',
+    'not_found' => 'عفوا لا بوجد بيانات'
+
+];

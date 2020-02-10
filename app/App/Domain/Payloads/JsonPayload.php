@@ -9,7 +9,9 @@
 namespace App\App\Domain\Payloads;
 
 
-class JsonPayload
+class JsonPayload extends Payload
 {
+    protected $status = 202;
+    protected $data = ['message' => 'Sorry Data is Exist'];
 
 }

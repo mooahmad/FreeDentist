@@ -13,7 +13,7 @@ class RegisterUserResponder extends Responder implements ResponderInterface
         if($this->response->getStatus() != 200) {
             return response()->json($this->response->getData(), $this->response->getStatus());
         }
-        return (new UserResource($this->response->getData()));
-//            ->additional(['meta' => ['token' => $this->response->getData()->generateAuthToken()]]);
+        return (new UserResource($this->response->getData()))
+         ->additional(['token' => $this->response->getData()->generateAuthToken()]);
     }
 }

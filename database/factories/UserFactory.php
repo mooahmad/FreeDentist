@@ -1,7 +1,7 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\Users\Domain\Models\User;
+use App\Users\Domain\Models\Dentist;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
@@ -16,7 +16,7 @@ use Illuminate\Support\Str;
 |
  */
 
-$factory->define(User::class, function (Faker $faker) {
+$factory->define(Dentist::class, function (Faker $faker) {
     return [
         'first_name' => $faker->name,
         'last_name' => $faker->name,
@@ -26,7 +26,7 @@ $factory->define(User::class, function (Faker $faker) {
         'updated_at' => now(),
     ];
 });
-$factory->afterCreatingState(User::class, 'with-activation', function ($user) {
+$factory->afterCreatingState(Dentist::class, 'with-activation', function ($user) {
     $user->activation()->create([
         'token' => Str::random(32),
     ]);

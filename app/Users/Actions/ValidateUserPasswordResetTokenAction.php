@@ -2,7 +2,7 @@
 
 namespace App\Users\Actions;
 
-use App\Users\Domain\Models\User;
+use App\Users\Domain\Models\Dentist;
 use App\Users\Domain\Services\ValidateUserPasswordResetTokenService;
 use App\Users\Responders\ValidateUserPasswordResetTokenResponder;
 
@@ -13,7 +13,7 @@ class ValidateUserPasswordResetTokenAction
         $this->responder = $responder;
         $this->services = $services;
     }
-    public function __invoke(User $user, $token)
+    public function __invoke(Dentist $user, $token)
     {
         return $this->responder->withResponse(
             $this->services->handle($user, $token)
