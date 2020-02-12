@@ -20,8 +20,7 @@ class DentistCalendarRepository extends Repository
     public function timeExist($data = [])
     {
         return $this->model->where('hospital_id', $data['hospital_id'])->where('service_id', $data['service_id'])->
-        where('star
-        t_date', Carbon::parse($data['start_date']))->where('start_time', $data['start_time'])->first();
+        where('start_date', Carbon::parse($data['start_date']))->where('start_time', $data['start_time'])->first();
     }
 
     public function dentistCalendar($data = [])
